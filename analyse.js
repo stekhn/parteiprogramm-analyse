@@ -40,9 +40,8 @@ function aggregate(data) {
 
         paragraph.fipi.domain.forEach(function (policy) {
 
-          // @TODO Calcuations shouldn't be done here
-          var left = paragraph.fipi.leftright[0].prediction * policy.prediction;
-          var right = paragraph.fipi.leftright[1].prediction * policy.prediction;
+          var left = paragraph.fipi.leftright[1].prediction * policy.prediction;
+          var right = paragraph.fipi.leftright[0].prediction * policy.prediction;
           var boost = policy.prediction;
 
           if (result[party][policy.label]) {
@@ -81,18 +80,21 @@ function analyse(data) {
       var right = getSum(data[party][policy].right);
       var boost = getSum(data[party][policy].boost);
 
-      var value = left / boost - right / boost;
+      var value = right / boost - left / boost;
 
       if (!result[policy]) result[policy] = [];
 
       result[policy].push({
 
         party: party,
-        value: value
+        value: value,
+        left: left,
+        right: right,
       });
     });
   });
 
+  console.log(result);
   return result;
 }
 
