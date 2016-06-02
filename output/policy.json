@@ -1,0 +1,182 @@
+{
+  "External Relations": [
+    {
+      "party": "FDP",
+      "value": -0.6744159309984223
+    },
+    {
+      "party": "AFD",
+      "value": -0.12998278300037225
+    },
+    {
+      "party": "NPD",
+      "value": -0.3557630921977522
+    },
+    {
+      "party": "LINKE",
+      "value": -0.9424584279868727
+    },
+    {
+      "party": "CDU",
+      "value": -0.7300584363803133
+    },
+    {
+      "party": "SPD",
+      "value": -0.6554185478745758
+    },
+    {
+      "party": "Grüne",
+      "value": -0.8871263985869071
+    }
+  ],
+  "Fabric of Society": [
+    {
+      "party": "FDP",
+      "value": 0.8453291740870681
+    },
+    {
+      "party": "AFD",
+      "value": 0.7594097132057901
+    },
+    {
+      "party": "NPD",
+      "value": 0.6942268981768732
+    },
+    {
+      "party": "LINKE",
+      "value": 0.2855921902950866
+    },
+    {
+      "party": "CDU",
+      "value": 0.7994567747349361
+    },
+    {
+      "party": "SPD",
+      "value": 0.7685821318676797
+    },
+    {
+      "party": "Grüne",
+      "value": 0.38721869464376624
+    }
+  ],
+  "Welfare and Quality of Life": [
+    {
+      "party": "FDP",
+      "value": -0.183338761999349
+    },
+    {
+      "party": "AFD",
+      "value": -0.3506519990397243
+    },
+    {
+      "party": "NPD",
+      "value": -0.4243379629276177
+    },
+    {
+      "party": "LINKE",
+      "value": -0.2916281662612067
+    },
+    {
+      "party": "CDU",
+      "value": -0.10815887130124846
+    },
+    {
+      "party": "SPD",
+      "value": -0.3122258160915258
+    },
+    {
+      "party": "Grüne",
+      "value": -0.3930813368759793
+    }
+  ],
+  "Freedom and Democracy": [
+    {
+      "party": "FDP",
+      "value": 0.5239545903653249
+    },
+    {
+      "party": "AFD",
+      "value": -0.12551502911533274
+    },
+    {
+      "party": "NPD",
+      "value": 0.4396830182026251
+    },
+    {
+      "party": "LINKE",
+      "value": -0.5108592922667785
+    },
+    {
+      "party": "CDU",
+      "value": 0.47668022578027897
+    },
+    {
+      "party": "SPD",
+      "value": 0.3428300438865922
+    },
+    {
+      "party": "Grüne",
+      "value": -0.14657294250112413
+    }
+  ],
+  "Political System": [
+    {
+      "party": "FDP",
+      "value": 0.3565880075872032
+    },
+    {
+      "party": "AFD",
+      "value": -0.259902396730228
+    },
+    {
+      "party": "NPD",
+      "value": 0.02004938952878732
+    },
+    {
+      "party": "LINKE",
+      "value": 0.30581721924245464
+    },
+    {
+      "party": "CDU",
+      "value": 0.6505765518327249
+    },
+    {
+      "party": "SPD",
+      "value": 0.5279881353864665
+    },
+    {
+      "party": "Grüne",
+      "value": 0.5096386250931666
+    }
+  ],
+  "Economy": [
+    {
+      "party": "FDP",
+      "value": -0.12158826526192085
+    },
+    {
+      "party": "AFD",
+      "value": -0.4161432480684165
+    },
+    {
+      "party": "NPD",
+      "value": -0.18849862157187208
+    },
+    {
+      "party": "LINKE",
+      "value": -0.5995548948061656
+    },
+    {
+      "party": "CDU",
+      "value": -0.1155055339601262
+    },
+    {
+      "party": "SPD",
+      "value": -0.3806755172342517
+    },
+    {
+      "party": "Grüne",
+      "value": -0.46655204360674485
+    }
+  ]
+}

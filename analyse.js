@@ -87,9 +87,7 @@ function analyse(data) {
       result[policy].push({
 
         party: party,
-        value: value,
-        left: left,
-        right: right,
+        value: value
       });
     });
   });
