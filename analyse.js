@@ -1,17 +1,23 @@
 var fs = require('fs');
+var path = require('path');
 
 (function init() {
 
-  loadFile();
+  loadFile(function (data) {
+
+    data = aggregate(data);
+    data = analyse(data);
+    saveFile('./output/policy.json', JSON.stringify(data, null, 2));
+  });
 })();
 
-function loadFile() {
+function loadFile(callback) {
 
-  fs.readFile('./data/documents-fipi.json', 'utf8', function (error, result) {
+  fs.readFile('./input/documents-fipi.json', 'utf8', function (error, result) {
 
     if (!error) {
 
-      analyse(aggregate(JSON.parse(result)));
+      callback(JSON.parse(result));
     } else {
 
       console.log(error);
@@ -90,23 +96,25 @@ function analyse(data) {
   return result;
 }
 
-function findObject(arr, key, value) {
-
-  for (var i = 0; i < arr.length; i++) {
-
-    if (arr[i][key] === value) {
-
-      return arr[i];
-    }
-  }
-
-  return null;
-}
-
 function getSum(arr) {
 
   return arr.reduce(function (a, b) {
 
     return a + b;
   });
+}
+
+function saveFile(relativePath, string) {
+
+  relativePath = path.normalize(relativePath);
+
+  console.log('Saved file', relativePath);
+
+  try {
+
+    return fs.writeFileSync(relativePath, string, 'utf8');
+  } catch (error) {
+
+    console.log(error);
+  }
 }
