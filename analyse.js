@@ -11,7 +11,7 @@ function loadFile() {
 
     if (!error) {
 
-      aggregate(JSON.parse(result));
+      analyse(aggregate(JSON.parse(result)));
     } else {
 
       console.log(error);
@@ -21,12 +21,12 @@ function loadFile() {
 
 function aggregate(data) {
 
-  var results = {};
+  var result = {};
   var parties = Object.keys(data);
 
   parties.forEach(function (party) {
 
-    results[party] = {};
+    result[party] = {};
 
     var paragraphs = data[party];
 
@@ -34,23 +34,60 @@ function aggregate(data) {
 
         paragraph.fipi.domain.forEach(function (policy) {
 
-          console.log(policy);
+          // @TODO Calcuations shouldn't be done here
+          var left = paragraph.fipi.leftright[0].prediction * policy.prediction;
+          var right = paragraph.fipi.leftright[1].prediction * policy.prediction;
+          var boost = policy.prediction;
 
-          if (results[party][policy.label]) {
+          if (result[party][policy.label]) {
 
-            results[party][policy.label].left.push(paragraph.fipi.max_leftrigth);
-            results[party][policy.label].right.push(paragraph.fipi.max_leftrigth);
+            result[party][policy.label].left.push(left);
+            result[party][policy.label].right.push(right);
+            result[party][policy.label].boost.push(boost);
           } else {
 
-            results[party][policy.label] = {};
-            results[party][policy.label].left = [paragraph.fipi.leftright[0] * policy.prediction];
-            results[party][policy.label].right = [paragraph.fipi.leftright[1] * policy.prediction];
+            result[party][policy.label] = {
+
+              left: [left],
+              right: [right],
+              boost: [boost]
+            };
           }
         });
       });
   });
 
-  console.log(results);
+  return result;
+}
+
+function analyse(data) {
+
+  var result = {};
+  var parties = Object.keys(data);
+
+  parties.forEach(function (party) {
+
+    var policies = Object.keys(data[party]);
+
+    policies.forEach(function (policy) {
+
+      var left = getSum(data[party][policy].left);
+      var right = getSum(data[party][policy].right);
+      var boost = getSum(data[party][policy].boost);
+
+      var value = left / boost - right / boost;
+
+      if (!result[policy]) result[policy] = [];
+
+      result[policy].push({
+
+        party: party,
+        value: value
+      });
+    });
+  });
+
+  return result;
 }
 
 function findObject(arr, key, value) {
@@ -64,4 +101,12 @@ function findObject(arr, key, value) {
   }
 
   return null;
+}
+
+function getSum(arr) {
+
+  return arr.reduce(function (a, b) {
+
+    return a + b;
+  });
 }
