@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+html, body, .chart {
+  height: 300px;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: .9em;
+  font-weight: 400;
+  position: relative;
+}
+
+header {
+  margin-bottom: 1em;
+}
+
+header > div {
+  display: inline-block;
+  margin-right: .5em;
+  margin-top: 5px;
+  padding: .3em .5em;
+  border-radius: 5px;
+}
+
+header .box {
+  display: inline-block;
+  vertical-align: -.1em;
+  margin-right: .3em;
+  width: 6px;
+  height: 16px;
+}
+
+header .box.andere {
+  background: #889;
+}
+
+footer {
+  color: #889;
+  margin-left: 5px;
+}
+
+footer a {
+  color: #007bc2;
+}
+
+.chart {
+  position: relative;
+  display: block;
+}
+
+.axis line, .axis path {
+  shape-rendering: crispEdges;
+  stroke: black;
+  fill: none;
+}
+
+.axis .domain {
+  display: none;
+}
+
+.policy {
+  font-weight: 700;
+}
+
+.axis .tick text {
+  fill: #889;
+}
+
+.axis .tick line {
+  stroke: #889;
+}
+
+circle {
+  stroke: #fff;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+
+.cdu {
+  fill: #121212;
+  background: #121212;
+}
+
+.spd {
+  fill: #d71f1d;
+  background: #d71f1d;
+}
+
+.grüne {
+  fill: #0a8000;
+  background: #0a8000;
+}
+
+.fdp {
+  fill: #ffdd00;
+  background: #ffdd00;
+}
+
+.linke {
+  fill: #be3075;
+  background: #be3075;
+}
+
+.afd {
+  fill: #129ee6;
+  background: #129ee6;
+}
+
+.npd {
+  fill: #926239;
+  background: #926239;
+}
+
+.piraten {
+  fill: #FF8800;
+  background: #FF8800;
+}
+
+@media all and (max-width: 450px) {
+
+    .tick:nth-child(odd) {
+      display: none;
+    }
+}
+
+
