@@ -1,4 +1,4 @@
-(function molkereien() {
+(function policy() {
 
   'use strict';
 
@@ -45,7 +45,7 @@
 
     // Calculate initial dimensions, based on container size
     width = parseInt(chart.style('width'));
-    height = 120;
+    height = 90;
 
     svg = chart.append('svg')
       .attr('width', width)
@@ -63,14 +63,14 @@
 
     svg.append('text')
       .attr('class', 'policy')
-      .attr('x', margin.left / 2)
+      .attr('x', 0)
       .attr('y', 0)
       .attr('dy', '1em')
       .style('text-anchor', 'left')
-      .text(name);
+      .text(germanTitle(name));
 
     plot = svg.append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .attr('transform', 'translate(' + margin.left + ',' + 30 + ')')
       .attr('width', width)
       .attr('height', height)
       .attr('class', 'plot');
@@ -94,6 +94,24 @@
         .attr('width', 6)
         .attr('height', 16)
         .attr('r', 8);
+  }
+
+  function germanTitle(title) {
+
+    switch (title) {
+      case 'External Relations':
+        return 'Außenpolitik';
+      case 'Fabric of Society':
+        return 'Gesellschaft';
+      case 'Welfare and Quality of Life':
+        return 'Lebensqualität';
+      case 'Freedom and Democracy':
+        return 'Freiheit und Demokratie';
+      case 'Political System':
+        return 'Staatswesen';
+      case 'Economy':
+        return 'Wirtschaft';
+    }
   }
 
   function resize() {
