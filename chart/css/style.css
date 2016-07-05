@@ -29,8 +29,11 @@ header .box {
   display: inline-block;
   vertical-align: -.1em;
   margin-right: .3em;
-  width: 6px;
-  height: 16px;
+  width: 1em;
+  height: 1em;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
 }
 
 header .box.andere {
@@ -74,49 +77,65 @@ footer a {
 }
 
 circle {
-  stroke: #fff;
   stroke-width: 2px;
+  fill-opacity: 0.2;
   cursor: pointer;
 }
 
 .cdu {
   fill: #121212;
-  background: #121212;
+  stroke: #121212;
+  background-color: rgba(18, 18, 18, .2);
+  border-color: #121212;
 }
 
 .spd {
   fill: #d71f1d;
-  background: #d71f1d;
+  stroke: #d71f1d;
+  background-color: rgba(215, 31, 29, .2);
+  border-color: #d71f1d;
 }
 
 .grüne {
   fill: #0a8000;
-  background: #0a8000;
+  stroke: #0a8000;
+  background-color: rgba(10, 128, 0, .2);
+  border-color: #0a8000;
 }
 
 .fdp {
   fill: #ffdd00;
-  background: #ffdd00;
+  stroke: #ffdd00;
+  background-color: rgba(255, 221, 0, .2);
+  border-color: #ffdd00;
 }
 
 .linke {
   fill: #be3075;
-  background: #be3075;
+  stroke: #be3075;
+  background-color: rgba(190, 48, 117, .2);
+  border-color: #be3075;
 }
 
 .afd {
   fill: #129ee6;
-  background: #129ee6;
+  stroke: #129ee6;
+  background-color: rgba(18, 158, 230, .2);
+  border-color: #129ee6;
 }
 
 .npd {
   fill: #926239;
-  background: #926239;
+  stroke: #926239;
+  background-color: rgba(146, 98, 57, .2);
+  border-color: #926239;
 }
 
 .piraten {
-  fill: #FF8800;
-  background: #FF8800;
+  fill: #ff8800;
+  stroke: #ff8800;
+  background-color: rgba(255, 136, 0, .2);
+  border-color: #ff8800;
 }
 
 @media all and (max-width: 450px) {

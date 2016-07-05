@@ -87,13 +87,16 @@
     group.selectAll('dots')
         .data(data)
         .enter()
-      .append('rect')
+      .append('circle')
         .attr('class', function (d) { return d.party.toLowerCase(); })
-        .attr('x', function (d) { return xScale(d.value); })
-        //.attr('cx', function (d) { return xScale(d.value); })
-        .attr('width', 6)
-        .attr('height', 16)
-        .attr('r', 8);
+        //.attr('x', function (d) { return xScale(d.value); })
+        // .attr('width', 6)
+        // .attr('height', 16)
+        .attr('cx', function (d) { return xScale(d.value); })
+        .attr('r', function (d) {
+
+          return map(d.count, 3, 58, 8, 20);
+        });
   }
 
   function germanTitle(title) {
@@ -128,5 +131,10 @@
   function reset() {
 
     chart.selectAll('*').remove();
+  }
+
+  function map(value, fromMin, fromMax, toMin, toMax) {
+
+    return (value - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
   }
 })();
