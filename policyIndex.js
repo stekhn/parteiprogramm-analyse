@@ -36,30 +36,33 @@ function aggregate(data) {
 
     var paragraphs = data[party];
 
-      paragraphs.forEach(function (paragraph) {
+    paragraphs.forEach(function (paragraph) {
 
-        paragraph.fipi.domain.forEach(function (policy) {
+      paragraph.fipi.domain.forEach(function (policy) {
 
-          var left = paragraph.fipi.leftright[1].prediction * policy.prediction;
-          var right = paragraph.fipi.leftright[0].prediction * policy.prediction;
-          var boost = policy.prediction;
+        var left = paragraph.fipi.leftright[1].prediction * policy.prediction;
+        var right = paragraph.fipi.leftright[0].prediction * policy.prediction;
+        var boost = policy.prediction;
 
-          if (result[party][policy.label]) {
+        if (result[party][policy.label]) {
 
-            result[party][policy.label].left.push(left);
-            result[party][policy.label].right.push(right);
-            result[party][policy.label].boost.push(boost);
-          } else {
+          result[party][policy.label].left.push(left);
+          result[party][policy.label].right.push(right);
+          result[party][policy.label].boost.push(boost);
+        } else {
 
-            result[party][policy.label] = {
+          result[party][policy.label] = {
 
-              left: [left],
-              right: [right],
-              boost: [boost]
-            };
-          }
-        });
+            left: [left],
+            right: [right],
+            boost: [boost],
+            count: 0
+          };
+        }
       });
+
+      result[party][paragraph.fipi.max_domain].count += 1;
+    });
   });
 
   return result;
@@ -79,6 +82,7 @@ function analyse(data) {
       var left = getSum(data[party][policy].left);
       var right = getSum(data[party][policy].right);
       var boost = getSum(data[party][policy].boost);
+      var count = data[party][policy].count;
 
       var value = right / boost - left / boost;
 
@@ -87,12 +91,12 @@ function analyse(data) {
       result[policy].push({
 
         party: party,
-        value: value
+        value: value,
+        count: count
       });
     });
   });
 
-  console.log(result);
   return result;
 }
 
