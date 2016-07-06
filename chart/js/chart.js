@@ -66,7 +66,7 @@
       .attr('x', 0)
       .attr('y', 0)
       .attr('dy', '1em')
-      .style('text-anchor', 'left')
+      .style('text-anchor', 'start')
       .text(germanTitle(name));
 
     plot = svg.append('g')
@@ -89,32 +89,12 @@
         .enter()
       .append('circle')
         .attr('class', function (d) { return d.party.toLowerCase(); })
-        //.attr('x', function (d) { return xScale(d.value); })
-        // .attr('width', 6)
-        // .attr('height', 16)
         .attr('cx', function (d) { return xScale(d.value); })
         .attr('r', function (d) {
 
-          return map(d.count, 3, 58, 8, 20);
+          // Area from radius: Math.sqrt(d.count / Math.PI);
+          return map(d.count, 3, 58, 5, 20);
         });
-  }
-
-  function germanTitle(title) {
-
-    switch (title) {
-      case 'External Relations':
-        return 'Außenpolitik';
-      case 'Fabric of Society':
-        return 'Gesellschaft';
-      case 'Welfare and Quality of Life':
-        return 'Lebensqualität';
-      case 'Freedom and Democracy':
-        return 'Freiheit und Demokratie';
-      case 'Political System':
-        return 'Staatswesen';
-      case 'Economy':
-        return 'Wirtschaft';
-    }
   }
 
   function resize() {
@@ -131,6 +111,25 @@
   function reset() {
 
     chart.selectAll('*').remove();
+  }
+
+  function germanTitle(title) {
+
+    switch (title) {
+
+      case 'External Relations':
+        return 'Außenpolitik';
+      case 'Fabric of Society':
+        return 'Gesellschaft';
+      case 'Welfare and Quality of Life':
+        return 'Lebensqualität';
+      case 'Freedom and Democracy':
+        return 'Freiheit und Demokratie';
+      case 'Political System':
+        return 'Staatswesen';
+      case 'Economy':
+        return 'Wirtschaft';
+    }
   }
 
   function map(value, fromMin, fromMax, toMin, toMax) {
