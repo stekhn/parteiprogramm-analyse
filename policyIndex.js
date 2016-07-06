@@ -63,6 +63,8 @@ function aggregate(data) {
 
       result[party][paragraph.fipi.max_domain].count += 1;
     });
+
+    result[party].total = getTotal(result[party], 'count');
   });
 
   return result;
@@ -79,24 +81,31 @@ function analyse(data) {
 
     policies.forEach(function (policy) {
 
-      var left = getSum(data[party][policy].left);
-      var right = getSum(data[party][policy].right);
-      var boost = getSum(data[party][policy].boost);
-      var count = data[party][policy].count;
+      if (data[party][policy].hasOwnProperty('count')) {
 
-      var value = right / boost - left / boost;
+        var left = getSum(data[party][policy].left);
+        var right = getSum(data[party][policy].right);
+        var boost = getSum(data[party][policy].boost); // Optional
+        var count = data[party][policy].count;
+        var percent = count / data[party].total * 100;
 
-      if (!result[policy]) result[policy] = [];
+        var value = right / boost - left / boost;
 
-      result[policy].push({
+        if (!result[policy]) result[policy] = [];
 
-        party: party,
-        value: value,
-        count: count
-      });
+        result[policy].push({
+
+          party: party,
+          value: value,
+          count: count,
+          boost: boost,
+          percent: percent
+        });
+      }
     });
   });
 
+  console.log(result);
   return result;
 }
 
@@ -106,6 +115,14 @@ function getSum(arr) {
 
     return a + b;
   });
+}
+
+function getTotal(obj, key) {
+
+  return Object.keys(obj).reduce(function (previous, current) {
+
+    return previous + obj[current][key];
+  }, 0);
 }
 
 function saveFile(relativePath, string) {
