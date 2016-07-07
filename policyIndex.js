@@ -102,8 +102,7 @@ function analyse(data) {
         var left = getArraySum(data[party][policy].left);
         var right = getArraySum(data[party][policy].right);
         var boost = getArraySum(data[party][policy].boost);
-        var count = data[party].count;
-        var percent = boost / count * 100;
+        var percent = boost / data[party].count * 100;
 
         var value = right / boost - left / boost;
 
@@ -112,10 +111,9 @@ function analyse(data) {
         result[policy].push({
 
           party: party,
-          value: value,
-          boost: boost,
-          count: count,
-          percent: percent
+          value: Math.round(value * 100) / 100,
+          boost: Math.round(boost * 100) / 100,
+          percent: Math.round(percent * 100) / 100
         });
       }
     });
