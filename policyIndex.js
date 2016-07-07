@@ -5,8 +5,10 @@ var path = require('path');
 
   loadFile(function (data) {
 
+    data = transform(data);
     data = aggregate(data);
     data = analyse(data);
+
     saveFile('./output/policy.json', JSON.stringify(data, null, 2));
   });
 })();
@@ -25,7 +27,7 @@ function loadFile(callback) {
   });
 }
 
-function aggregate(data) {
+function transform(data) {
 
   var result = {};
   var parties = Object.keys(data);
@@ -60,11 +62,28 @@ function aggregate(data) {
         }
       });
     });
-
-    result[party].total = getTotal(result[party], 'boost');
   });
 
   return result;
+}
+
+function aggregate(data) {
+
+  var parties = Object.keys(data);
+
+  parties.forEach(function (party) {
+
+    data[party]['Total'] = {
+
+      left: mergeArrays(data[party], 'left'),
+      right: mergeArrays(data[party], 'right'),
+      boost: mergeArrays(data[party], 'boost')
+    };
+
+    data[party].count = getObjectSum(data[party], 'boost');
+  });
+
+  return data;
 }
 
 function analyse(data) {
@@ -80,10 +99,11 @@ function analyse(data) {
 
       if (data[party][policy].hasOwnProperty('boost')) {
 
-        var left = getSum(data[party][policy].left);
-        var right = getSum(data[party][policy].right);
-        var boost = getSum(data[party][policy].boost);
-        var percent = boost / data[party].total * 100;
+        var left = getArraySum(data[party][policy].left);
+        var right = getArraySum(data[party][policy].right);
+        var boost = getArraySum(data[party][policy].boost);
+        var count = data[party].count;
+        var percent = boost / count * 100;
 
         var value = right / boost - left / boost;
 
@@ -94,30 +114,40 @@ function analyse(data) {
           party: party,
           value: value,
           boost: boost,
+          count: count,
           percent: percent
         });
       }
     });
   });
 
-  //console.log(result);
+  // console.log(result);
   return result;
 }
 
-function getSum(arr) {
+function getArraySum(arr) {
 
-  return arr.reduce(function (a, b) {
+  return arr.reduce(function (previous, current) {
 
-    return a + b;
+    return previous + current;
   });
 }
 
-function getTotal(obj, key) {
+function getObjectSum(obj, key) {
 
   return Object.keys(obj).reduce(function (previous, current) {
 
-    return previous + getSum(obj[current][key]);
+    return previous + getArraySum(obj[current][key]);
   }, 0);
+}
+
+function mergeArrays(obj, key) {
+
+  return Object.keys(obj).reduce(function (previous, current) {
+
+    return previous.concat(obj[current][key]);
+  }, []);
+
 }
 
 function saveFile(relativePath, string) {
