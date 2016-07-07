@@ -49,6 +49,10 @@ footer a {
   color: #007bc2;
 }
 
+svg {
+  overflow: visible;
+}
+
 .chart {
   position: relative;
   display: block;

@@ -6,7 +6,7 @@
   var margin = { top: 40, right: 40, bottom: 20, left: 10 };
 
   // D3 elements, variables and functions
-  var chart, plot, svg, group, xScale, xAxis, width, height, timeout;
+  var chart, plot, svg, group, max, min, xScale, xAxis, width, height, timeout;
 
   // Fetched and wrangled data
   var cachedData = {};
@@ -47,9 +47,13 @@
     width = parseInt(chart.style('width'));
     height = 90;
 
+    min = d3.min(data, function (d) { return Math.sqrt(d.percent / Math.PI); } );
+    max = d3.max(data, function (d) { return Math.sqrt(d.percent / Math.PI); } );
+
     svg = chart.append('svg')
       .attr('width', width)
-      .attr('height', height);
+      .attr('height', height)
+      .attr('class', name);
 
     // Calculate the data scales
     xScale = d3.scale.linear()
@@ -92,8 +96,7 @@
         .attr('cx', function (d) { return xScale(d.value); })
         .attr('r', function (d) {
 
-          // Area from radius: Math.sqrt(d.count / Math.PI);
-          return map(d.count, 3, 58, 5, 20);
+          return map(Math.sqrt(d.percent / Math.PI), min, max, 7, 20);
         });
   }
 
@@ -129,11 +132,13 @@
         return 'Staatswesen';
       case 'Economy':
         return 'Wirtschaft';
+      case 'Total':
+        return 'Gesamt';
     }
   }
 
   function map(value, fromMin, fromMax, toMin, toMax) {
 
-    return (value - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
+    return (value - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin || toMax - toMin;
   }
 })();
