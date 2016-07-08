@@ -106,8 +106,9 @@ function analyse(data) {
 
         var percent = arraySum(weight) / data[party].count * 100;
         var difference = arrayDifference(left, right);
-        var average = weightedAverage(difference, weight);
-        var stdDev = standardDeviation(difference);
+        var mean = weightedMean(difference, weight);
+        var variance = weightedVariance(difference, weight);
+        var stdDev = Math.sqrt(variance);
 
         if (!result[policy]) result[policy] = [];
 
@@ -115,7 +116,8 @@ function analyse(data) {
 
           party: party,
           percent: Math.round(percent * 100) / 100,
-          average: Math.round(average * 100) / 100,
+          mean: Math.round(mean * 100) / 100,
+          variance: Math.round(variance * 100) / 100,
           stdDev: Math.round(stdDev * 100) / 100
         });
       }
@@ -150,7 +152,7 @@ function objectSum(obj, key) {
   }, 0);
 }
 
-function weightedAverage(values, weights) {
+function weightedMean(values, weights) {
 
   var result = values.map(function (value, i) {
 
@@ -166,18 +168,22 @@ function weightedAverage(values, weights) {
   return result[0] / result[1];
 }
 
-function standardDeviation(arr) {
+function weightedVariance(values, weights) {
 
-  var avg = arraySum(arr) / arr.length;
+  var avg = weightedMean(values, weights);
 
-  var squareDiffs = arr.map(function (value) {
+  var result = values.map(function (value, i) {
 
+    var weight = weights[i];
     var diff = value - avg;
-    var sqrDiff = diff * diff;
-    return sqrDiff;
-  });
 
-  return Math.sqrt(arraySum(squareDiffs) / squareDiffs.length);
+    return weight * Math.pow(diff, 2);
+  }).reduce(function (previous, current) {
+
+    return previous + current;
+  }, 0);
+
+  return result;
 }
 
 function mergeArrays(obj, key) {

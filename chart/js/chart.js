@@ -93,7 +93,7 @@
         .enter()
       .append('circle')
         .attr('class', function (d) { return d.party.toLowerCase(); })
-        .attr('cx', function (d) { return xScale(d.average); })
+        .attr('cx', function (d) { return xScale(d.mean); })
         .attr('r', function (d) {
 
           return map(Math.sqrt(d.percent / Math.PI), min, max, 7, 20);
