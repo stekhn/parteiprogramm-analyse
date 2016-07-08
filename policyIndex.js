@@ -46,6 +46,7 @@ function transform(data) {
         var right = paragraph.fipi.leftright[0].prediction;
         var weight = policy.prediction;
 
+        // @TODO Refactor
         if (result[party][policy.label]) {
 
           result[party][policy.label].left.push(left);
@@ -102,19 +103,20 @@ function analyse(data) {
         var left = data[party][policy].left;
         var right = data[party][policy].right;
         var weight = data[party][policy].weight;
-        var percent = arraySum(weight) / data[party].count * 100;
 
+        var percent = arraySum(weight) / data[party].count * 100;
         var difference = arrayDifference(left, right);
-        var value = weightedAverage(difference, weight);
+        var average = weightedAverage(difference, weight);
+        var stdDev = standardDeviation(difference);
 
         if (!result[policy]) result[policy] = [];
 
         result[policy].push({
 
           party: party,
-          average: Math.round(value * 100) / 100,
-          weight: Math.round(weight * 100) / 100,
-          percent: Math.round(percent * 100) / 100
+          percent: Math.round(percent * 100) / 100,
+          average: Math.round(average * 100) / 100,
+          stdDev: Math.round(stdDev * 100) / 100
         });
       }
     });
@@ -162,6 +164,20 @@ function weightedAverage(values, weights) {
   }, [0, 0]);
 
   return result[0] / result[1];
+}
+
+function standardDeviation(arr) {
+
+  var avg = arraySum(arr) / arr.length;
+
+  var squareDiffs = arr.map(function (value) {
+
+    var diff = value - avg;
+    var sqrDiff = diff * diff;
+    return sqrDiff;
+  });
+
+  return Math.sqrt(arraySum(squareDiffs) / squareDiffs.length);
 }
 
 function mergeArrays(obj, key) {
