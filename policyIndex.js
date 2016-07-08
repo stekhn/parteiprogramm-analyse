@@ -42,22 +42,22 @@ function transform(data) {
 
       paragraph.fipi.domain.forEach(function (policy) {
 
-        var left = paragraph.fipi.leftright[1].prediction * policy.prediction;
-        var right = paragraph.fipi.leftright[0].prediction * policy.prediction;
-        var boost = policy.prediction;
+        var left = paragraph.fipi.leftright[1].prediction;
+        var right = paragraph.fipi.leftright[0].prediction;
+        var weight = policy.prediction;
 
         if (result[party][policy.label]) {
 
           result[party][policy.label].left.push(left);
           result[party][policy.label].right.push(right);
-          result[party][policy.label].boost.push(boost);
+          result[party][policy.label].weight.push(weight);
         } else {
 
           result[party][policy.label] = {
 
             left: [left],
             right: [right],
-            boost: [boost]
+            weight: [weight]
           };
         }
       });
@@ -77,10 +77,10 @@ function aggregate(data) {
 
       left: mergeArrays(data[party], 'left'),
       right: mergeArrays(data[party], 'right'),
-      boost: mergeArrays(data[party], 'boost')
+      weight: mergeArrays(data[party], 'weight')
     };
 
-    data[party].count = getObjectSum(data[party], 'boost');
+    data[party].count = objectSum(data[party], 'weight');
   });
 
   return data;
@@ -97,33 +97,42 @@ function analyse(data) {
 
     policies.forEach(function (policy) {
 
-      if (data[party][policy].hasOwnProperty('boost')) {
+      if (data[party][policy].hasOwnProperty('weight')) {
 
-        var left = getArraySum(data[party][policy].left);
-        var right = getArraySum(data[party][policy].right);
-        var boost = getArraySum(data[party][policy].boost);
-        var percent = boost / data[party].count * 100;
+        var left = data[party][policy].left;
+        var right = data[party][policy].right;
+        var weight = data[party][policy].weight;
+        var percent = arraySum(weight) / data[party].count * 100;
 
-        var value = right / boost - left / boost;
+        var difference = arrayDifference(left, right);
+        var value = weightedAverage(difference, weight);
 
         if (!result[policy]) result[policy] = [];
 
         result[policy].push({
 
           party: party,
-          value: Math.round(value * 100) / 100,
-          boost: Math.round(boost * 100) / 100,
+          average: Math.round(value * 100) / 100,
+          weight: Math.round(weight * 100) / 100,
           percent: Math.round(percent * 100) / 100
         });
       }
     });
   });
 
-  // console.log(result);
+  //console.log(result);
   return result;
 }
 
-function getArraySum(arr) {
+function arrayDifference(a, b) {
+
+  return a.map(function (value, i) {
+
+    return b[i] - value;
+  });
+}
+
+function arraySum(arr) {
 
   return arr.reduce(function (previous, current) {
 
@@ -131,12 +140,28 @@ function getArraySum(arr) {
   });
 }
 
-function getObjectSum(obj, key) {
+function objectSum(obj, key) {
 
   return Object.keys(obj).reduce(function (previous, current) {
 
-    return previous + getArraySum(obj[current][key]);
+    return previous + arraySum(obj[current][key]);
   }, 0);
+}
+
+function weightedAverage(values, weights) {
+
+  var result = values.map(function (value, i) {
+
+    var weight = weights[i];
+    var sum = value * weight;
+
+    return [sum, weight];
+  }).reduce(function (previous, current) {
+
+    return [previous[0] + current[0], previous[1] + current[1]];
+  }, [0, 0]);
+
+  return result[0] / result[1];
 }
 
 function mergeArrays(obj, key) {
@@ -145,7 +170,6 @@ function mergeArrays(obj, key) {
 
     return previous.concat(obj[current][key]);
   }, []);
-
 }
 
 function saveFile(relativePath, string) {
