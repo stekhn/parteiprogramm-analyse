@@ -40,28 +40,23 @@ function transform(data) {
 
     paragraphs.forEach(function (paragraph) {
 
-      paragraph.fipi.domain.forEach(function (policy) {
+      var policy = paragraph.fipi.max_domain
+      var left = paragraph.fipi.leftright[1].prediction;
+      var right = paragraph.fipi.leftright[0].prediction;
 
-        var left = paragraph.fipi.leftright[1].prediction;
-        var right = paragraph.fipi.leftright[0].prediction;
-        var weight = policy.prediction;
+      // @TODO Refactor
+      if (result[party][policy]) {
 
-        // @TODO Refactor
-        if (result[party][policy.label]) {
+        result[party][policy].left.push(left);
+        result[party][policy].right.push(right);
+      } else {
 
-          result[party][policy.label].left.push(left);
-          result[party][policy.label].right.push(right);
-          result[party][policy.label].weight.push(weight);
-        } else {
+        result[party][policy] = {
 
-          result[party][policy.label] = {
-
-            left: [left],
-            right: [right],
-            weight: [weight]
-          };
-        }
-      });
+          left: [left],
+          right: [right],
+        };
+      }
     });
   });
 
@@ -72,16 +67,17 @@ function aggregate(data) {
 
   var parties = Object.keys(data);
 
+      console.log(data);
+
   parties.forEach(function (party) {
 
     data[party]['Total'] = {
 
       left: mergeArrays(data[party], 'left'),
       right: mergeArrays(data[party], 'right'),
-      weight: mergeArrays(data[party], 'weight')
     };
 
-    data[party].count = objectSum(data[party], 'weight');
+    data[party].count = objectSum(data[party], 'left');
   });
 
   return data;
@@ -98,17 +94,13 @@ function analyse(data) {
 
     policies.forEach(function (policy) {
 
-      if (data[party][policy].hasOwnProperty('weight')) {
+      if (data[party][policy].hasOwnProperty('left')) {
 
         var left = data[party][policy].left;
         var right = data[party][policy].right;
-        var weight = data[party][policy].weight;
 
-        var percent = arraySum(weight) / data[party].count * 100;
-        var difference = arrayDifference(left, right);
-        var mean = weightedMean(difference, weight);
-        var variance = weightedVariance(difference, weight);
-        var stdDev = Math.sqrt(variance);
+        var values = arrayDifference(left, right);
+        var percent = values.length / data[party].count * 100;
 
         if (!result[policy]) result[policy] = [];
 
@@ -116,15 +108,15 @@ function analyse(data) {
 
           party: party,
           percent: Math.round(percent * 100) / 100,
-          mean: Math.round(mean * 100) / 100,
-          variance: Math.round(variance * 100) / 100,
-          stdDev: Math.round(stdDev * 100) / 100
+          mean: Math.round(mean(values) * 100) / 100,
+          median: Math.round(median(values) * 100) / 100,
+          stdDev: Math.round(stdDev(values) * 100) / 100
         });
       }
     });
   });
 
-  //console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -152,38 +144,41 @@ function objectSum(obj, key) {
   }, 0);
 }
 
-function weightedMean(values, weights) {
+function mean(arr) {
 
-  var result = values.map(function (value, i) {
+  return arr.reduce(function (p, c) {
 
-    var weight = weights[i];
-    var sum = value * weight;
-
-    return [sum, weight];
-  }).reduce(function (previous, current) {
-
-    return [previous[0] + current[0], previous[1] + current[1]];
-  }, [0, 0]);
-
-  return result[0] / result[1];
+    return p + c;
+  }) / arr.length;
 }
 
-function weightedVariance(values, weights) {
+function median(arr) {
 
-  var avg = weightedMean(values, weights);
+  var middle = Math.floor(arr.length / 2);
 
-  var result = values.map(function (value, i) {
+  arr.sort(function (a, b) { return a - b; });
 
-    var weight = weights[i];
-    var diff = value - avg;
+  if (arr.length % 2) {
 
-    return weight * Math.pow(diff, 2);
-  }).reduce(function (previous, current) {
+    return arr[middle];
+  } else {
 
-    return previous + current;
-  }, 0);
+    return (arr[middle - 1] + arr[middle]) / 2.0;
+  }
+}
 
-  return result;
+function stdDev(arr) {
+
+  var squareDiffs = arr.map(function (value) {
+
+    var diff = value - mean(arr);
+    var sqrDiff = diff * diff;
+    return sqrDiff;
+  });
+
+  var variance = mean(squareDiffs);
+
+  return Math.sqrt(variance);
 }
 
 function mergeArrays(obj, key) {

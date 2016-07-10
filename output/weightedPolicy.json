@@ -1,0 +1,359 @@
+{
+  "External Relations": [
+    {
+      "party": "FDP",
+      "percent": 7.49,
+      "mean": -0.67,
+      "variance": 5.5,
+      "stdDev": 2.35
+    },
+    {
+      "party": "AfD",
+      "percent": 5.53,
+      "mean": -0.33,
+      "variance": 9.81,
+      "stdDev": 3.13
+    },
+    {
+      "party": "NPD",
+      "percent": 8.63,
+      "mean": -0.36,
+      "variance": 9.09,
+      "stdDev": 3.02
+    },
+    {
+      "party": "LINKE",
+      "percent": 5.98,
+      "mean": -0.94,
+      "variance": 0.13,
+      "stdDev": 0.35
+    },
+    {
+      "party": "CDU",
+      "percent": 4.25,
+      "mean": -0.73,
+      "variance": 0.96,
+      "stdDev": 0.98
+    },
+    {
+      "party": "SPD",
+      "percent": 7.89,
+      "mean": -0.66,
+      "variance": 2.63,
+      "stdDev": 1.62
+    },
+    {
+      "party": "Grüne",
+      "percent": 7.53,
+      "mean": -0.89,
+      "variance": 1.35,
+      "stdDev": 1.16
+    }
+  ],
+  "Fabric of Society": [
+    {
+      "party": "FDP",
+      "percent": 5.09,
+      "mean": 0.85,
+      "variance": 1.27,
+      "stdDev": 1.13
+    },
+    {
+      "party": "AfD",
+      "percent": 7.68,
+      "mean": 0.71,
+      "variance": 6.24,
+      "stdDev": 2.5
+    },
+    {
+      "party": "NPD",
+      "percent": 10.38,
+      "mean": 0.69,
+      "variance": 6.02,
+      "stdDev": 2.45
+    },
+    {
+      "party": "LINKE",
+      "percent": 2.49,
+      "mean": 0.29,
+      "variance": 3.04,
+      "stdDev": 1.74
+    },
+    {
+      "party": "CDU",
+      "percent": 6.83,
+      "mean": 0.8,
+      "variance": 2.03,
+      "stdDev": 1.43
+    },
+    {
+      "party": "SPD",
+      "percent": 4.72,
+      "mean": 0.77,
+      "variance": 0.98,
+      "stdDev": 0.99
+    },
+    {
+      "party": "Grüne",
+      "percent": 2.51,
+      "mean": 0.39,
+      "variance": 4.21,
+      "stdDev": 2.05
+    }
+  ],
+  "Welfare and Quality of Life": [
+    {
+      "party": "FDP",
+      "percent": 10.36,
+      "mean": -0.18,
+      "variance": 13.85,
+      "stdDev": 3.72
+    },
+    {
+      "party": "AfD",
+      "percent": 14.69,
+      "mean": -0.29,
+      "variance": 23.96,
+      "stdDev": 4.89
+    },
+    {
+      "party": "NPD",
+      "percent": 15.62,
+      "mean": -0.42,
+      "variance": 10.44,
+      "stdDev": 3.23
+    },
+    {
+      "party": "LINKE",
+      "percent": 19.58,
+      "mean": -0.29,
+      "variance": 18.02,
+      "stdDev": 4.24
+    },
+    {
+      "party": "CDU",
+      "percent": 21.41,
+      "mean": -0.11,
+      "variance": 23.71,
+      "stdDev": 4.87
+    },
+    {
+      "party": "SPD",
+      "percent": 17.73,
+      "mean": -0.31,
+      "variance": 14.59,
+      "stdDev": 3.82
+    },
+    {
+      "party": "Grüne",
+      "percent": 23.53,
+      "mean": -0.39,
+      "variance": 32.64,
+      "stdDev": 5.71
+    }
+  ],
+  "Freedom and Democracy": [
+    {
+      "party": "FDP",
+      "percent": 12.47,
+      "mean": 0.52,
+      "variance": 17.04,
+      "stdDev": 4.13
+    },
+    {
+      "party": "AfD",
+      "percent": 7.3,
+      "mean": -0.12,
+      "variance": 19.12,
+      "stdDev": 4.37
+    },
+    {
+      "party": "NPD",
+      "percent": 5.16,
+      "mean": 0.44,
+      "variance": 5.1,
+      "stdDev": 2.26
+    },
+    {
+      "party": "LINKE",
+      "percent": 10.41,
+      "mean": -0.51,
+      "variance": 8.22,
+      "stdDev": 2.87
+    },
+    {
+      "party": "CDU",
+      "percent": 4.19,
+      "mean": 0.48,
+      "variance": 4.37,
+      "stdDev": 2.09
+    },
+    {
+      "party": "SPD",
+      "percent": 2.62,
+      "mean": 0.34,
+      "variance": 1.81,
+      "stdDev": 1.34
+    },
+    {
+      "party": "Grüne",
+      "percent": 6.99,
+      "mean": -0.15,
+      "variance": 14.97,
+      "stdDev": 3.87
+    }
+  ],
+  "Political System": [
+    {
+      "party": "FDP",
+      "percent": 2.17,
+      "mean": 0.36,
+      "variance": 2.83,
+      "stdDev": 1.68
+    },
+    {
+      "party": "AfD",
+      "percent": 4.02,
+      "mean": -0.48,
+      "variance": 5.99,
+      "stdDev": 2.45
+    },
+    {
+      "party": "NPD",
+      "percent": 1.25,
+      "mean": 0.02,
+      "variance": 1.08,
+      "stdDev": 1.04
+    },
+    {
+      "party": "LINKE",
+      "percent": 3.66,
+      "mean": 0.31,
+      "variance": 3.47,
+      "stdDev": 1.86
+    },
+    {
+      "party": "CDU",
+      "percent": 5.72,
+      "mean": 0.65,
+      "variance": 4.27,
+      "stdDev": 2.07
+    },
+    {
+      "party": "SPD",
+      "percent": 5.97,
+      "mean": 0.53,
+      "variance": 2.5,
+      "stdDev": 1.58
+    },
+    {
+      "party": "Grüne",
+      "percent": 2.37,
+      "mean": 0.51,
+      "variance": 3.46,
+      "stdDev": 1.86
+    }
+  ],
+  "Economy": [
+    {
+      "party": "FDP",
+      "percent": 12.43,
+      "mean": -0.12,
+      "variance": 15.63,
+      "stdDev": 3.95
+    },
+    {
+      "party": "AfD",
+      "percent": 10.77,
+      "mean": -0.36,
+      "variance": 20.83,
+      "stdDev": 4.56
+    },
+    {
+      "party": "NPD",
+      "percent": 8.96,
+      "mean": -0.19,
+      "variance": 8.56,
+      "stdDev": 2.93
+    },
+    {
+      "party": "LINKE",
+      "percent": 7.87,
+      "mean": -0.6,
+      "variance": 4.03,
+      "stdDev": 2.01
+    },
+    {
+      "party": "CDU",
+      "percent": 7.59,
+      "mean": -0.12,
+      "variance": 9.62,
+      "stdDev": 3.1
+    },
+    {
+      "party": "SPD",
+      "percent": 11.06,
+      "mean": -0.38,
+      "variance": 6.74,
+      "stdDev": 2.6
+    },
+    {
+      "party": "Grüne",
+      "percent": 7.08,
+      "mean": -0.47,
+      "variance": 8.48,
+      "stdDev": 2.91
+    }
+  ],
+  "Total": [
+    {
+      "party": "FDP",
+      "percent": 50,
+      "mean": 0.06,
+      "variance": 80.05,
+      "stdDev": 8.95
+    },
+    {
+      "party": "AfD",
+      "percent": 50,
+      "mean": -0.15,
+      "variance": 107.26,
+      "stdDev": 10.36
+    },
+    {
+      "party": "NPD",
+      "percent": 50,
+      "mean": -0.04,
+      "variance": 56.72,
+      "stdDev": 7.53
+    },
+    {
+      "party": "LINKE",
+      "percent": 50,
+      "mean": -0.39,
+      "variance": 45.03,
+      "stdDev": 6.71
+    },
+    {
+      "party": "CDU",
+      "percent": 50,
+      "mean": 0.1,
+      "variance": 61.75,
+      "stdDev": 7.86
+    },
+    {
+      "party": "SPD",
+      "percent": 50,
+      "mean": -0.14,
+      "variance": 41.97,
+      "stdDev": 6.48
+    },
+    {
+      "party": "Grüne",
+      "percent": 50,
+      "mean": -0.36,
+      "variance": 78.93,
+      "stdDev": 8.88
+    }
+  ]
+}
