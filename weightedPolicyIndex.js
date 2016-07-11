@@ -104,11 +104,8 @@ function analyse(data) {
         var right = data[party][policy].right;
         var weight = data[party][policy].weight;
 
+        var values = arrayDifference(left, right);
         var percent = arraySum(weight) / data[party].count * 100;
-        var difference = arrayDifference(left, right);
-        var mean = weightedMean(difference, weight);
-        var variance = weightedVariance(difference, weight);
-        var stdDev = Math.sqrt(variance);
 
         if (!result[policy]) result[policy] = [];
 
@@ -116,9 +113,8 @@ function analyse(data) {
 
           party: party,
           percent: Math.round(percent * 100) / 100,
-          mean: Math.round(mean * 100) / 100,
-          variance: Math.round(variance * 100) / 100,
-          stdDev: Math.round(stdDev * 100) / 100
+          mean: Math.round(weightedMean(values, weight) * 100) / 100,
+          stdDev: Math.round(weightedStdDev(values, weight) * 100) / 100
         });
       }
     });
@@ -168,7 +164,7 @@ function weightedMean(values, weights) {
   return result[0] / result[1];
 }
 
-function weightedVariance(values, weights) {
+function weightedStdDev(values, weights) {
 
   var mean = weightedMean(values, weights);
 
@@ -183,7 +179,7 @@ function weightedVariance(values, weights) {
     return previous + current;
   }, 0);
 
-  return result;
+  return Math.sqrt(result);
 }
 
 function mergeArrays(obj, key) {
