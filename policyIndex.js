@@ -67,17 +67,15 @@ function aggregate(data) {
 
   var parties = Object.keys(data);
 
-      console.log(data);
-
   parties.forEach(function (party) {
 
     data[party]['Total'] = {
 
       left: mergeArrays(data[party], 'left'),
-      right: mergeArrays(data[party], 'right'),
+      right: mergeArrays(data[party], 'right')
     };
 
-    data[party].count = objectSum(data[party], 'left');
+    data[party].count = arrayLength(data[party], 'left');
   });
 
   return data;
@@ -136,11 +134,11 @@ function arraySum(arr) {
   });
 }
 
-function objectSum(obj, key) {
+function arrayLength(obj, key) {
 
   return Object.keys(obj).reduce(function (previous, current) {
 
-    return previous + arraySum(obj[current][key]);
+    return previous + obj[current][key].length;
   }, 0);
 }
 
@@ -173,6 +171,7 @@ function stdDev(arr) {
 
     var diff = value - mean(arr);
     var sqrDiff = diff * diff;
+
     return sqrDiff;
   });
 
