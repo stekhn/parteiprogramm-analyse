@@ -9,7 +9,7 @@ var path = require('path');
     data = aggregate(data);
     data = analyse(data);
 
-    saveFile('./output/policy.json', JSON.stringify(data, null, 2));
+    saveFile('./output/weightedPolicy.json', JSON.stringify(data, null, 2));
   });
 })();
 
@@ -114,6 +114,7 @@ function analyse(data) {
           party: party,
           percent: Math.round(percent * 100) / 100,
           mean: Math.round(weightedMean(values, weight) * 100) / 100,
+          median: Math.round(weightedMedian(values, weight) * 100) / 100,
           stdDev: Math.round(weightedStdDev(values, weight) * 100) / 100
         });
       }
@@ -162,6 +163,50 @@ function weightedMean(values, weights) {
   }, [0, 0]);
 
   return result[0] / result[1];
+}
+
+function weightedMedian(values, weights) {
+
+  var midpoint = 0.5 * arraySum(weights);
+
+  var cumulativeWeight = 0;
+  var belowMidpointIndex = 0;
+
+  var sortedValues = [];
+  var sortedWeights = [];
+
+  values.map(function (value, i) {
+
+    return [value, weights[i]];
+  }).sort(function (a, b) {
+
+    return a[0] - b[0];
+  }).map(function (pair) {
+
+    sortedValues.push(pair[0]);
+    sortedWeights.push(pair[1]);
+  });
+
+  if (sortedWeights.some(function (value) { return value > midpoint; })) {
+
+    return sortedValues[sortedWeights.indexOf(Math.max.apply(null, sortedWeights))];
+  }
+
+  while (cumulativeWeight <= midpoint) {
+
+    belowMidpointIndex++;
+    cumulativeWeight += sortedWeights[belowMidpointIndex - 1];
+  }
+
+  cumulativeWeight -= sortedWeights[belowMidpointIndex - 1];
+
+  if (cumulativeWeight - midpoint < Number.EPSILON) {
+
+    var bounds = sortedValues.slice(belowMidpointIndex - 2, belowMidpointIndex);
+    return arraySum(bounds) / bounds.length;
+  }
+
+  return sortedValues[belowMidpointIndex - 1];
 }
 
 function weightedStdDev(values, weights) {

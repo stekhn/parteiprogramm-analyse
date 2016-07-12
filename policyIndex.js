@@ -126,14 +126,6 @@ function arrayDifference(a, b) {
   });
 }
 
-function arraySum(arr) {
-
-  return arr.reduce(function (previous, current) {
-
-    return previous + current;
-  });
-}
-
 function arrayLength(obj, key) {
 
   return Object.keys(obj).reduce(function (previous, current) {
