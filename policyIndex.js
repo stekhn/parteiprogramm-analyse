@@ -9,7 +9,7 @@ var path = require('path');
     data = aggregate(data);
     data = analyse(data);
 
-    saveFile('./output/policy.json', JSON.stringify(data, null, 2));
+    saveFile('./output/weightedPolicy.json', JSON.stringify(data, null, 2));
   });
 })();
 
@@ -40,7 +40,7 @@ function transform(data) {
 
     paragraphs.forEach(function (paragraph) {
 
-      var policy = paragraph.fipi.max_domain
+      var policy = paragraph.fipi.max_domain;
       var left = paragraph.fipi.leftright[1].prediction;
       var right = paragraph.fipi.leftright[0].prediction;
 
@@ -99,6 +99,15 @@ function analyse(data) {
 
         var values = arrayDifference(left, right);
         var percent = values.length / data[party].count * 100;
+
+        if (party === 'CDU' && policy === 'Political System') {
+
+          console.log('left', left);
+          console.log('right', right);
+          console.log('values', values);
+          console.log('percent', percent);
+        }
+
 
         if (!result[policy]) result[policy] = [];
 

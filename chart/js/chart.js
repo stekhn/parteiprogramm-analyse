@@ -11,7 +11,7 @@
   // Fetched and wrangled data
   var cachedData = {};
 
-  d3.json('../output/policy.json', function (data) {
+  d3.json('../output/weightedPolicy.json', function (data) {
 
     init(data);
   });
@@ -29,9 +29,14 @@
       data = cachedData;
     }
 
-    for (var current in data) {
+    var keys = Object.keys(data).sort(function (a, b) {
 
-      draw(data[current], current);
+      return germanTitle(a).localeCompare(germanTitle(b));
+    });
+
+    for (var key in keys) {
+
+      draw(data[keys[key]], keys[key]);
     }
   }
 
@@ -97,7 +102,8 @@
         .attr('r', function (d) {
 
           return map(Math.sqrt(d.percent / Math.PI), min, max, 7, 20);
-        });
+        })
+        .on('mouseenter', function (d) { console.log(d); });
   }
 
   function resize() {
@@ -133,7 +139,7 @@
       case 'Economy':
         return 'Wirtschaft';
       case 'Total':
-        return 'Gesamt';
+        return 'Zusammenfassung';
     }
   }
 
