@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 html, body, .chart {
-  height: 300px;
   width: 100%;
 }
 
@@ -27,10 +26,10 @@ header > div {
 
 header .box {
   display: inline-block;
-  vertical-align: -.1em;
   margin-right: .3em;
   width: 1em;
   height: 1em;
+  vertical-align: -.1em;
   border-width: 2px;
   border-style: solid;
   border-radius: 50%;
@@ -86,59 +85,63 @@ circle {
   cursor: pointer;
 }
 
+line {
+  stroke-dasharray: 5, 5;
+}
+
 .cdu {
   fill: #121212;
   stroke: #121212;
-  background-color: rgba(18, 18, 18, .2);
+  background-color: rgba(18, 18, 18, 1);
   border-color: #121212;
 }
 
 .spd {
   fill: #d71f1d;
   stroke: #d71f1d;
-  background-color: rgba(215, 31, 29, .2);
+  background-color: rgba(215, 31, 29, 1);
   border-color: #d71f1d;
 }
 
 .grüne {
   fill: #0a8000;
   stroke: #0a8000;
-  background-color: rgba(10, 128, 0, .2);
+  background-color: rgba(10, 128, 0, 1);
   border-color: #0a8000;
 }
 
 .fdp {
   fill: #ffdd00;
   stroke: #ffdd00;
-  background-color: rgba(255, 221, 0, .2);
+  background-color: rgba(255, 221, 0, 1);
   border-color: #ffdd00;
 }
 
 .linke {
   fill: #be3075;
   stroke: #be3075;
-  background-color: rgba(190, 48, 117, .2);
+  background-color: rgba(190, 48, 117, 1);
   border-color: #be3075;
 }
 
 .afd {
   fill: #129ee6;
   stroke: #129ee6;
-  background-color: rgba(18, 158, 230, .2);
+  background-color: rgba(18, 158, 230, 1);
   border-color: #129ee6;
 }
 
 .npd {
   fill: #926239;
   stroke: #926239;
-  background-color: rgba(146, 98, 57, .2);
+  background-color: rgba(146, 98, 57, 1);
   border-color: #926239;
 }
 
 .piraten {
   fill: #ff8800;
   stroke: #ff8800;
-  background-color: rgba(255, 136, 0, .2);
+  background-color: rgba(255, 136, 0, 1);
   border-color: #ff8800;
 }
 
