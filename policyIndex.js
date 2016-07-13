@@ -9,7 +9,7 @@ var path = require('path');
     data = aggregate(data);
     data = analyse(data);
 
-    saveFile('./output/weightedPolicy.json', JSON.stringify(data, null, 2));
+    saveFile('./output/policy.json', JSON.stringify(data, null, 2));
   });
 })();
 
@@ -54,7 +54,7 @@ function transform(data) {
         result[party][policy] = {
 
           left: [left],
-          right: [right],
+          right: [right]
         };
       }
     });
@@ -100,21 +100,14 @@ function analyse(data) {
         var values = arrayDifference(left, right);
         var percent = values.length / data[party].count * 100;
 
-        if (party === 'CDU' && policy === 'Political System') {
-
-          console.log('left', left);
-          console.log('right', right);
-          console.log('values', values);
-          console.log('percent', percent);
-        }
-
-
         if (!result[policy]) result[policy] = [];
 
         result[policy].push({
 
           party: party,
           percent: Math.round(percent * 100) / 100,
+          min: Math.round(Math.min.apply(null, values) * 100) / 100,
+          max: Math.round(Math.max.apply(null, values) * 100) / 100,
           mean: Math.round(mean(values) * 100) / 100,
           median: Math.round(median(values) * 100) / 100,
           stdDev: Math.round(stdDev(values) * 100) / 100

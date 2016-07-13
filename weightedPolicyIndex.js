@@ -113,6 +113,8 @@ function analyse(data) {
 
           party: party,
           percent: Math.round(percent * 100) / 100,
+          min: Math.round(Math.min.apply(null, values) * 100) / 100,
+          max: Math.round(Math.max.apply(null, values) * 100) / 100,
           mean: Math.round(weightedMean(values, weight) * 100) / 100,
           median: Math.round(weightedMedian(values, weight) * 100) / 100,
           stdDev: Math.round(weightedStdDev(values, weight) * 100) / 100
@@ -211,21 +213,23 @@ function weightedMedian(values, weights) {
 
 function weightedStdDev(values, weights) {
 
-  var mean = weightedMean(values, weights);
+  var avg = weightedMean(values, weights);
 
   var result = values.map(function (value, i) {
 
     var weight = weights[i];
-    var diff = value - mean;
+    var diff = value - avg;
+    var sqrDiff = weight * Math.pow(diff, 2);
 
-    return weight * Math.pow(diff, 2);
+    return [sqrDiff, weight];
   }).reduce(function (previous, current) {
 
-    return previous + current;
-  }, 0);
+    return [previous[0] + current[0], previous[1] + current[1]];
+  }, [0, 0]);
 
-  return Math.sqrt(result);
+  return Math.sqrt(result[0] / result[1]);
 }
+
 
 function mergeArrays(obj, key) {
 

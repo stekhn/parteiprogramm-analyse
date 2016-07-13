@@ -3,357 +3,455 @@
     {
       "party": "FDP",
       "percent": 7.49,
+      "min": -1,
+      "max": 1,
       "mean": -0.67,
       "median": -0.99,
-      "stdDev": 2.35
+      "stdDev": 0.58
     },
     {
       "party": "AfD",
       "percent": 5.53,
+      "min": -1,
+      "max": 1,
       "mean": -0.33,
       "median": -0.85,
-      "stdDev": 3.13
+      "stdDev": 0.76
     },
     {
       "party": "NPD",
       "percent": 8.63,
+      "min": -1,
+      "max": 1,
       "mean": -0.36,
       "median": -0.85,
-      "stdDev": 3.02
+      "stdDev": 0.81
     },
     {
       "party": "LINKE",
       "percent": 5.98,
+      "min": -1,
+      "max": 1,
       "mean": -0.94,
       "median": -1,
-      "stdDev": 0.35
+      "stdDev": 0.12
     },
     {
       "party": "CDU",
       "percent": 4.25,
+      "min": -1,
+      "max": 1,
       "mean": -0.73,
       "median": -0.87,
-      "stdDev": 0.98
+      "stdDev": 0.36
     },
     {
       "party": "SPD",
       "percent": 7.89,
+      "min": -1,
+      "max": 1,
       "mean": -0.66,
       "median": -0.99,
-      "stdDev": 1.62
+      "stdDev": 0.52
     },
     {
       "party": "Grüne",
       "percent": 7.53,
+      "min": -1,
+      "max": 1,
       "mean": -0.89,
       "median": -1,
-      "stdDev": 1.16
+      "stdDev": 0.27
     }
   ],
   "Fabric of Society": [
     {
       "party": "FDP",
       "percent": 5.09,
+      "min": -1,
+      "max": 1,
       "mean": 0.85,
       "median": 1,
-      "stdDev": 1.13
+      "stdDev": 0.34
     },
     {
       "party": "AfD",
       "percent": 7.68,
+      "min": -1,
+      "max": 1,
       "mean": 0.71,
       "median": 0.97,
-      "stdDev": 2.5
+      "stdDev": 0.52
     },
     {
       "party": "NPD",
       "percent": 10.38,
+      "min": -1,
+      "max": 1,
       "mean": 0.69,
       "median": 0.98,
-      "stdDev": 2.45
+      "stdDev": 0.6
     },
     {
       "party": "LINKE",
       "percent": 2.49,
+      "min": -1,
+      "max": 1,
       "mean": 0.29,
       "median": 1,
-      "stdDev": 1.74
+      "stdDev": 0.9
     },
     {
       "party": "CDU",
       "percent": 6.83,
+      "min": -1,
+      "max": 1,
       "mean": 0.8,
       "median": 1,
-      "stdDev": 1.43
+      "stdDev": 0.42
     },
     {
       "party": "SPD",
       "percent": 4.72,
+      "min": -1,
+      "max": 1,
       "mean": 0.77,
       "median": 0.96,
-      "stdDev": 0.99
+      "stdDev": 0.41
     },
     {
       "party": "Grüne",
       "percent": 2.51,
+      "min": -1,
+      "max": 1,
       "mean": 0.39,
       "median": 0.85,
-      "stdDev": 2.05
+      "stdDev": 0.83
     }
   ],
   "Welfare and Quality of Life": [
     {
       "party": "FDP",
       "percent": 10.36,
+      "min": -1,
+      "max": 1,
       "mean": -0.18,
       "median": -0.43,
-      "stdDev": 3.72
+      "stdDev": 0.79
     },
     {
       "party": "AfD",
       "percent": 14.69,
+      "min": -1,
+      "max": 1,
       "mean": -0.29,
       "median": -0.62,
-      "stdDev": 4.89
+      "stdDev": 0.73
     },
     {
       "party": "NPD",
       "percent": 15.62,
+      "min": -1,
+      "max": 1,
       "mean": -0.42,
       "median": -0.63,
-      "stdDev": 3.23
+      "stdDev": 0.64
     },
     {
       "party": "LINKE",
       "percent": 19.58,
+      "min": -1,
+      "max": 1,
       "mean": -0.29,
       "median": -0.86,
-      "stdDev": 4.24
+      "stdDev": 0.78
     },
     {
       "party": "CDU",
       "percent": 21.41,
+      "min": -1,
+      "max": 1,
       "mean": -0.11,
       "median": -0.17,
-      "stdDev": 4.87
+      "stdDev": 0.81
     },
     {
       "party": "SPD",
       "percent": 17.73,
+      "min": -1,
+      "max": 1,
       "mean": -0.31,
       "median": -0.93,
-      "stdDev": 3.82
+      "stdDev": 0.82
     },
     {
       "party": "Grüne",
       "percent": 23.53,
+      "min": -1,
+      "max": 1,
       "mean": -0.39,
       "median": -0.85,
-      "stdDev": 5.71
+      "stdDev": 0.76
     }
   ],
   "Freedom and Democracy": [
     {
       "party": "FDP",
       "percent": 12.47,
+      "min": -1,
+      "max": 1,
       "mean": 0.52,
       "median": 1,
-      "stdDev": 4.13
+      "stdDev": 0.8
     },
     {
       "party": "AfD",
       "percent": 7.3,
+      "min": -1,
+      "max": 1,
       "mean": -0.12,
       "median": -0.73,
-      "stdDev": 4.37
+      "stdDev": 0.93
     },
     {
       "party": "NPD",
       "percent": 5.16,
+      "min": -1,
+      "max": 1,
       "mean": 0.44,
       "median": 0.95,
-      "stdDev": 2.26
+      "stdDev": 0.78
     },
     {
       "party": "LINKE",
       "percent": 10.41,
+      "min": -1,
+      "max": 1,
       "mean": -0.51,
       "median": -1,
-      "stdDev": 2.87
+      "stdDev": 0.73
     },
     {
       "party": "CDU",
       "percent": 4.19,
+      "min": -1,
+      "max": 1,
       "mean": 0.48,
       "median": 0.96,
-      "stdDev": 2.09
+      "stdDev": 0.78
     },
     {
       "party": "SPD",
       "percent": 2.62,
+      "min": -1,
+      "max": 1,
       "mean": 0.34,
       "median": 0.74,
-      "stdDev": 1.34
+      "stdDev": 0.75
     },
     {
       "party": "Grüne",
       "percent": 6.99,
+      "min": -1,
+      "max": 1,
       "mean": -0.15,
       "median": -0.99,
-      "stdDev": 3.87
+      "stdDev": 0.94
     }
   ],
   "Political System": [
     {
       "party": "FDP",
       "percent": 2.17,
+      "min": -1,
+      "max": 1,
       "mean": 0.36,
       "median": 0.92,
-      "stdDev": 1.68
+      "stdDev": 0.78
     },
     {
       "party": "AfD",
       "percent": 4.02,
+      "min": -1,
+      "max": 1,
       "mean": -0.48,
       "median": -0.83,
-      "stdDev": 2.45
+      "stdDev": 0.7
     },
     {
       "party": "NPD",
       "percent": 1.25,
+      "min": -1,
+      "max": 1,
       "mean": 0.02,
       "median": 0.21,
-      "stdDev": 1.04
+      "stdDev": 0.73
     },
     {
       "party": "LINKE",
       "percent": 3.66,
+      "min": -1,
+      "max": 1,
       "mean": 0.31,
       "median": 0.59,
-      "stdDev": 1.86
+      "stdDev": 0.79
     },
     {
       "party": "CDU",
       "percent": 5.72,
+      "min": -1,
+      "max": 1,
       "mean": 0.65,
       "median": 1,
-      "stdDev": 2.07
+      "stdDev": 0.66
     },
     {
       "party": "SPD",
       "percent": 5.97,
+      "min": -1,
+      "max": 1,
       "mean": 0.53,
       "median": 0.74,
-      "stdDev": 1.58
+      "stdDev": 0.59
     },
     {
       "party": "Grüne",
       "percent": 2.37,
+      "min": -1,
+      "max": 1,
       "mean": 0.51,
       "median": 0.97,
-      "stdDev": 1.86
+      "stdDev": 0.78
     }
   ],
   "Economy": [
     {
       "party": "FDP",
       "percent": 12.43,
+      "min": -1,
+      "max": 1,
       "mean": -0.12,
       "median": -0.18,
-      "stdDev": 3.95
+      "stdDev": 0.76
     },
     {
       "party": "AfD",
       "percent": 10.77,
+      "min": -1,
+      "max": 1,
       "mean": -0.36,
       "median": -0.93,
-      "stdDev": 4.56
+      "stdDev": 0.8
     },
     {
       "party": "NPD",
       "percent": 8.96,
+      "min": -1,
+      "max": 1,
       "mean": -0.19,
       "median": -0.44,
-      "stdDev": 2.93
+      "stdDev": 0.77
     },
     {
       "party": "LINKE",
       "percent": 7.87,
+      "min": -1,
+      "max": 1,
       "mean": -0.6,
       "median": -0.97,
-      "stdDev": 2.01
+      "stdDev": 0.58
     },
     {
       "party": "CDU",
       "percent": 7.59,
+      "min": -1,
+      "max": 1,
       "mean": -0.12,
       "median": -0.27,
-      "stdDev": 3.1
+      "stdDev": 0.86
     },
     {
       "party": "SPD",
       "percent": 11.06,
+      "min": -1,
+      "max": 1,
       "mean": -0.38,
       "median": -0.82,
-      "stdDev": 2.6
+      "stdDev": 0.71
     },
     {
       "party": "Grüne",
       "percent": 7.08,
+      "min": -1,
+      "max": 1,
       "mean": -0.47,
       "median": -0.83,
-      "stdDev": 2.91
+      "stdDev": 0.7
     }
   ],
   "Total": [
     {
       "party": "FDP",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": 0.06,
       "median": 0.09,
-      "stdDev": 8.95
+      "stdDev": 0.86
     },
     {
       "party": "AfD",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": -0.15,
       "median": -0.47,
-      "stdDev": 10.36
+      "stdDev": 0.84
     },
     {
       "party": "NPD",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": -0.04,
       "median": -0.25,
-      "stdDev": 7.53
+      "stdDev": 0.84
     },
     {
       "party": "LINKE",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": -0.39,
       "median": -0.92,
-      "stdDev": 6.71
+      "stdDev": 0.77
     },
     {
       "party": "CDU",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": 0.1,
       "median": 0.18,
-      "stdDev": 7.86
+      "stdDev": 0.85
     },
     {
       "party": "SPD",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": -0.14,
       "median": -0.35,
-      "stdDev": 6.48
+      "stdDev": 0.83
     },
     {
       "party": "Grüne",
       "percent": 50,
+      "min": -1,
+      "max": 1,
       "mean": -0.36,
       "median": -0.9,
-      "stdDev": 8.88
+      "stdDev": 0.81
     }
   ]
 }
