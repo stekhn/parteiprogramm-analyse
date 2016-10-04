@@ -89,15 +89,15 @@ Für jedes Poltikfeld und jede Partei werden jeweils folgende Indikatoren berech
   "median": -0.1, // Median der Links-Rechts-Wert
   "stdDev": 0.77 // Standardabweichung
 }
-``
+```
 
 Die Daten der Auswertung finden sich in `output/`.
 
 ## Visualisierung
 Die Visualisierungen dienen zur Zeit vor allem der Auswertungen und der Analyse. Eine Visualsierung für den Endbenutzer sollte übersichtlicher und komprimierter sein.
 
-![Bubble Chart](https://raw.githubusercontent.com/digitalegarage/afd-parteiprogramm-analyse/master/chart/bubbles.png?token=ABg6fQ_l29LopPHRwob5aEKsIzpVVYOCks5XjzuQwA%3D%3D)
-Visualisierungen
+![Bubble Chart](afd-parteiprogramm-analyse/chart/bubbles.png)
+
 Bisher gibt es zwei Versionen:
 
 1. durchschnittlicher Links-Rechts-Wert (y) mit Aussagenanteil (r): `bubbles.js`
