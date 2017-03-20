@@ -101,9 +101,14 @@
         .attr('cx', function (d) { return xScale(d.mean); })
         .attr('r', function (d) {
 
+          // Set radius relative to 100%
+          // return map(Math.sqrt( / Math.PI), 0, 100, 7, 20);
+
+          // Set radius relative to current domain
           return map(Math.sqrt(d.percent / Math.PI), min, max, 7, 20);
+
         })
-        .on('mouseenter', function (d) { console.log(d); });
+        .on('click', function (d) { console.log(d); });
   }
 
   function resize() {

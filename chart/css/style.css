@@ -29,7 +29,7 @@ header .box {
   margin-right: .3em;
   width: 1em;
   height: 1em;
-  vertical-align: -.1em;
+  vertical-align: sub;
   border-width: 2px;
   border-style: solid;
   border-radius: 50%;
@@ -37,6 +37,16 @@ header .box {
 
 header .box.andere {
   background: #889;
+}
+
+header .scale {
+  display: block;
+  color: #889;
+}
+
+header .scale svg {
+  vertical-align: middle;
+  margin: 0 .5em;
 }
 
 footer {
