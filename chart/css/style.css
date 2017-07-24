@@ -41,12 +41,11 @@ header .box.andere {
 
 header .scale {
   display: block;
-  color: #889;
 }
 
 header .scale svg {
   vertical-align: middle;
-  margin: 0 .5em;
+  margin: 0 .2em;
 }
 
 footer {

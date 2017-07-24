@@ -1,5 +1,5 @@
-# Semantische Analyse des AFD Parteiprogramms
-Sammlung an Tools um das Parteiprogramm der AFD semantisch zu untersuchen. Welche Aussagen lassen sich welchem politischen Spektrum (rechts/links) zuordnen? Wie steht die AFD im Vergleich zu anderen Parteien da?
+# Analyse der Parteiprogramme
+Sammlung an Tools um die Parteiprogramme zur Bundestagswahl 2017 zu untersuchen. Welche Aussagen lassen sich welchem politischen Spektrum (rechts/links) zuordnen? Wie steht die AFD im Vergleich zu anderen Parteien da?
 
 ## Verwendung
 1. Repository klonen `git clone https://...`
